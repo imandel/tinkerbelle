@@ -84,6 +84,10 @@ control.onclick = () => {
 };
 
 light.onclick = () => {
+  // safari requires playing on input before allowing audio
+  audio.muted = true;
+  audio.play().then(audio.muted=false)
+
   // in light mode make it full screen and fade buttons
   document.documentElement.requestFullscreen();
   document.getElementById('user').classList.add('fadeOut');
